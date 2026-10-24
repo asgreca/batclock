@@ -14,45 +14,26 @@ export function App() {
   const [showSeconds, setShowSeconds] = useState(true);
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [selectedDigit, setSelectedDigit] = useState(null);
-  const [isTicking, setIsTicking] = useState(false);
-  const [lightningFlash, setLightningFlash] = useState(false);
 
   // Themes
   const themes = ['default', 'noir', 'arkham'];
   const themeLabels = ['WAYNE TECH', 'GCPD NOIR', 'ARKHAM TOXIC'];
   const [themeIndex, setThemeIndex] = useState(0);
 
-  // Clock Interval
+  // Clock 1-second interval
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
-      setIsTicking((prev) => !prev);
     }, 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // Play sound on each second if enabled
+  // Audio click (if user turned on sound)
   useEffect(() => {
     if (soundEnabled) {
       playTacticalClick(true);
     }
   }, [time.getSeconds(), soundEnabled]);
-
-  // Ambient Lightning timer
-  useEffect(() => {
-    let timeout;
-    const triggerLightning = () => {
-      if (Math.random() > 0.4) {
-        setLightningFlash(true);
-        setTimeout(() => setLightningFlash(false), 90);
-        setTimeout(() => setLightningFlash(true), 140);
-        setTimeout(() => setLightningFlash(false), 240);
-      }
-      timeout = setTimeout(triggerLightning, 18000 + Math.random() * 22000);
-    };
-    timeout = setTimeout(triggerLightning, 8000);
-    return () => clearTimeout(timeout);
-  }, []);
 
   // Keyboard Shortcuts (F = Fullscreen, M = Mute, T = Theme, Esc = Close modal)
   useEffect(() => {
@@ -98,10 +79,6 @@ export function App() {
       <div className="vignette-overlay" />
       <div className="scanlines" />
       <RainCanvas />
-      <div
-        className="lightning-flash"
-        style={{ opacity: lightningFlash ? 0.35 : 0 }}
-      />
 
       {/* Main Container */}
       <div className="app-container">
@@ -117,7 +94,7 @@ export function App() {
             </div>
 
             {/* Separator 1 */}
-            <Separator isTicking={isTicking} />
+            <Separator />
 
             {/* Minutes */}
             <div className="digit-group">
@@ -126,7 +103,7 @@ export function App() {
             </div>
 
             {/* Separator 2 */}
-            {showSeconds && <Separator isTicking={isTicking} />}
+            {showSeconds && <Separator />}
 
             {/* Seconds */}
             {showSeconds && (

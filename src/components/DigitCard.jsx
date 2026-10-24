@@ -1,61 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { characters } from '../data/characters';
 
 export function DigitCard({ slotKey, digit, onSelect }) {
-  const [activeBuffer, setActiveBuffer] = useState('a');
-  const [bufferA, setBufferA] = useState({ digit, src: '' });
-  const [bufferB, setBufferB] = useState({ digit: '', src: '' });
-  const [pulse, setPulse] = useState(false);
-
   const charData = characters[digit] || characters['0'];
-
-  // Handle double-buffered image transition on digit change
-  useEffect(() => {
-    const nextSrc = charData.localImg;
-
-    if (activeBuffer === 'a') {
-      setBufferB({ digit, src: nextSrc });
-      setActiveBuffer('b');
-    } else {
-      setBufferA({ digit, src: nextSrc });
-      setActiveBuffer('a');
-    }
-
-    setPulse(true);
-    const t = setTimeout(() => setPulse(false), 500);
-    return () => clearTimeout(t);
-  }, [digit]);
 
   return (
     <div
-      className={`digit-card ${pulse ? 'digit-updated' : ''}`}
+      className="digit-card"
       data-slot={slotKey}
       onClick={() => onSelect(digit)}
       title={`Ver ficha criminal de ${charData.name} (#${digit})`}
     >
-      {/* Tactical Top Header */}
+      {/* Tactical Top Ribbon */}
       <div className="card-ribbon">
         <span className="badge-gcpd">GCPD</span>
         <span className="badge-slot">{slotKey.toUpperCase()}</span>
       </div>
 
-      {/* Crossfading Images */}
+      {/* Single Solid Opaque Image (Zero Ghosting, Zero Flicker) */}
       <div className="card-images-wrapper">
         <img
-          className={`digit-img ${activeBuffer === 'a' ? 'active' : 'prev'}`}
-          src={bufferA.src || charData.localImg}
-          alt={charData.name}
-          onError={(e) => { e.currentTarget.src = charData.fallbackImg; }}
-        />
-        <img
-          className={`digit-img ${activeBuffer === 'b' ? 'active' : 'prev'}`}
-          src={bufferB.src || charData.localImg}
+          className="digit-img"
+          src={charData.localImg}
           alt={charData.name}
           onError={(e) => { e.currentTarget.src = charData.fallbackImg; }}
         />
       </div>
 
-      {/* Glass Sheen */}
+      {/* Clean Glass Overlay */}
       <div className="card-glass"></div>
 
       {/* Tactical Bottom Footer */}

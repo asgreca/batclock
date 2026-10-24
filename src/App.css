@@ -59,7 +59,7 @@ html, body, #root {
   color: var(--text-main);
 }
 
-/* Ambient Cinematic Background with Vignette */
+/* Ambient Background with Vignette */
 .viewport-bg {
   position: fixed;
   inset: 0;
@@ -101,17 +101,6 @@ html, body, #root {
   inset: 0;
   z-index: 3;
   pointer-events: none;
-}
-
-/* Lightning Flash Effect */
-.lightning-flash {
-  position: fixed;
-  inset: 0;
-  z-index: 4;
-  background: rgba(255, 245, 180, 0.12);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.1s ease-out;
 }
 
 /* App Shell */
@@ -230,13 +219,7 @@ header.bat-header {
   height: 9px;
   border-radius: 50%;
   background: var(--primary);
-  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-  animation: pulse-dot 1.5s infinite ease-in-out;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1.1); }
-  50% { opacity: 0.25; transform: scale(0.75); }
+  box-shadow: 0 0 10px var(--primary);
 }
 
 .telemetry-bar {
@@ -260,7 +243,7 @@ header.bat-header {
 }
 
 /* ==========================================================================
-   CENTER CLOCK STAGE: HERO-SIZED CLEAN FRAME
+   CENTER CLOCK STAGE: HERO-SIZED SOLID CARDS (ZERO FLICKER)
    ========================================================================== */
 .clock-stage {
   width: 100%;
@@ -273,7 +256,7 @@ header.bat-header {
   position: relative;
 }
 
-/* Clean, Balanced Lineup Frame (No detached outer brackets) */
+/* Steady, Elegant Lineup Frame */
 .lineup-frame {
   display: flex;
   align-items: center;
@@ -289,13 +272,12 @@ header.bat-header {
   position: relative;
 }
 
-/* DIGIT GROUPS */
 .digit-group {
   display: flex;
   gap: clamp(10px, 1.2vw, 22px);
 }
 
-/* HERO-SIZED DIGIT CARD */
+/* SOLID STABLE DIGIT CARD (NO FLASHING BORDERS) */
 .digit-card {
   position: relative;
   height: clamp(340px, 48vh, 560px);
@@ -308,11 +290,11 @@ header.bat-header {
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.92);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .digit-card:hover {
-  transform: translateY(-10px) scale(1.025);
+  transform: translateY(-8px);
   border-color: var(--primary);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98), 0 0 30px var(--primary-glow);
 }
@@ -349,11 +331,12 @@ header.bat-header {
   opacity: 0.85;
 }
 
-/* Crossfading Mugshots Layer */
+/* Image Container (100% Solid, Instant Updates, Zero Ghosting) */
 .card-images-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
+  background: #000000;
 }
 
 .digit-img {
@@ -363,23 +346,13 @@ header.bat-header {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  transition: opacity 0.35s ease-in-out, transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
   filter: contrast(1.1) brightness(0.98);
-}
-
-.digit-img.active {
   opacity: 1;
-  transform: scale(1);
-  z-index: 2;
+  /* Instant swap: NO crossfade transparency overlap */
+  transition: none;
 }
 
-.digit-img.prev {
-  opacity: 0;
-  transform: scale(0.97);
-  z-index: 1;
-}
-
-/* Glass Surface Sheen */
+/* Clean Glass Overlay */
 .card-glass {
   position: absolute;
   inset: 0;
@@ -429,18 +402,8 @@ header.bat-header {
   text-shadow: 0 0 8px var(--primary-glow);
 }
 
-/* Subtle clean card update flash without border snapping */
-.digit-card.digit-updated {
-  animation: card-pulse 0.45s ease-out;
-}
-
-@keyframes card-pulse {
-  0% { box-shadow: 0 0 25px var(--primary-glow); }
-  100% { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.92); }
-}
-
 /* ==========================================================================
-   SEPARATORS: BAT-BEACON COLON STACKS
+   STEADY SEPARATORS: STEADY GLOW (NO BLINKING)
    ========================================================================== */
 .separator-container {
   display: flex;
@@ -457,13 +420,8 @@ header.bat-header {
   background: var(--primary);
   border-radius: 4px;
   box-shadow: 0 0 16px var(--primary), 0 0 32px var(--primary-glow);
-  transition: all 0.25s ease;
-}
-
-.bat-beacon-led.dim {
-  opacity: 0.18;
-  box-shadow: none;
-  filter: grayscale(0.9);
+  opacity: 0.9;
+  /* Steady glow: zero annoying blinking */
 }
 
 /* ==========================================================================

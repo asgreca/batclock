@@ -121,7 +121,7 @@ html, body, #root {
    ========================================================================== */
 header.bat-header {
   width: 100%;
-  max-width: 1920px;
+  max-width: 1600px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -243,11 +243,11 @@ header.bat-header {
 }
 
 /* ==========================================================================
-   CENTER CLOCK STAGE: HERO-SIZED SOLID CARDS (ZERO FLICKER)
+   CENTER CLOCK STAGE: 4 LARGE HERO-SIZED CARDS (HOURS & MINUTES)
    ========================================================================== */
 .clock-stage {
   width: 100%;
-  max-width: 1920px;
+  max-width: 1600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -256,14 +256,14 @@ header.bat-header {
   position: relative;
 }
 
-/* Steady, Elegant Lineup Frame */
 .lineup-frame {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(12px, 1.8vw, 32px);
-  width: 100%;
-  padding: clamp(24px, 3.8vh, 52px) clamp(20px, 2.5vw, 44px);
+  gap: clamp(16px, 2.5vw, 44px);
+  width: auto;
+  max-width: 95vw;
+  padding: clamp(28px, 4vh, 56px) clamp(24px, 3vw, 56px);
   background: radial-gradient(ellipse at center, rgba(14, 16, 24, 0.92) 0%, rgba(6, 7, 10, 0.98) 85%);
   border: 1.5px solid var(--border-panel);
   border-radius: 14px;
@@ -274,18 +274,18 @@ header.bat-header {
 
 .digit-group {
   display: flex;
-  gap: clamp(10px, 1.2vw, 22px);
+  gap: clamp(12px, 1.6vw, 26px);
 }
 
-/* SOLID STABLE DIGIT CARD (NO FLASHING BORDERS) */
+/* HERO-SIZED DIGIT CARD (52vh tall on desktop) */
 .digit-card {
   position: relative;
-  height: clamp(340px, 48vh, 560px);
+  height: clamp(360px, 52vh, 600px);
   aspect-ratio: 1024 / 1395;
   width: auto;
-  min-width: 135px;
+  min-width: 160px;
   background: var(--bg-card);
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1.5px solid var(--border-card);
   overflow: hidden;
   cursor: pointer;
@@ -307,12 +307,12 @@ header.bat-header {
   right: 0;
   z-index: 5;
   background: linear-gradient(180deg, rgba(4, 5, 8, 0.95) 0%, rgba(4, 5, 8, 0.45) 100%);
-  padding: clamp(8px, 1.2vh, 12px) clamp(10px, 1vw, 16px);
+  padding: clamp(8px, 1.2vh, 14px) clamp(10px, 1vw, 18px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(0.7rem, 0.85vw, 0.95rem);
+  font-size: clamp(0.75rem, 0.9vw, 1rem);
   color: var(--text-muted);
   border-bottom: 1px solid rgba(255, 229, 0, 0.12);
   pointer-events: none;
@@ -348,7 +348,6 @@ header.bat-header {
   object-position: center top;
   filter: contrast(1.1) brightness(0.98);
   opacity: 1;
-  /* Instant swap: NO crossfade transparency overlap */
   transition: none;
 }
 
@@ -370,7 +369,7 @@ header.bat-header {
   right: 0;
   z-index: 5;
   background: linear-gradient(0deg, rgba(3, 4, 6, 0.98) 0%, rgba(5, 6, 9, 0.88) 65%, transparent 100%);
-  padding: clamp(20px, 2.8vh, 32px) clamp(8px, 0.8vw, 14px) clamp(8px, 1.2vh, 14px);
+  padding: clamp(22px, 3vh, 36px) clamp(8px, 0.8vw, 16px) clamp(10px, 1.4vh, 16px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -381,7 +380,7 @@ header.bat-header {
 
 .char-name {
   font-family: 'Cinzel', serif;
-  font-size: clamp(0.75rem, 1vw, 1.15rem);
+  font-size: clamp(0.85rem, 1.1vw, 1.25rem);
   font-weight: 800;
   letter-spacing: 0.12em;
   color: #ffffff;
@@ -394,7 +393,7 @@ header.bat-header {
 
 .char-code {
   font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(0.65rem, 0.8vw, 0.85rem);
+  font-size: clamp(0.7rem, 0.85vw, 0.9rem);
   color: var(--primary);
   font-weight: bold;
   letter-spacing: 0.12em;
@@ -403,25 +402,24 @@ header.bat-header {
 }
 
 /* ==========================================================================
-   STEADY SEPARATORS: STEADY GLOW (NO BLINKING)
+   STEADY CENTRAL SEPARATOR: TWIN BAT-BEACONS
    ========================================================================== */
 .separator-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(20px, 3.5vh, 40px);
-  padding: 0 clamp(6px, 0.8vw, 16px);
+  gap: clamp(24px, 4vh, 46px);
+  padding: 0 clamp(8px, 1vw, 20px);
 }
 
 .bat-beacon-led {
-  width: clamp(10px, 1.2vw, 18px);
-  height: clamp(24px, 3vh, 42px);
+  width: clamp(12px, 1.4vw, 20px);
+  height: clamp(28px, 3.5vh, 48px);
   background: var(--primary);
   border-radius: 4px;
-  box-shadow: 0 0 16px var(--primary), 0 0 32px var(--primary-glow);
-  opacity: 0.9;
-  /* Steady glow: zero annoying blinking */
+  box-shadow: 0 0 18px var(--primary), 0 0 36px var(--primary-glow);
+  opacity: 0.92;
 }
 
 /* ==========================================================================
@@ -429,7 +427,7 @@ header.bat-header {
    ========================================================================== */
 footer.control-footer {
   width: 100%;
-  max-width: 1920px;
+  max-width: 1600px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -637,28 +635,28 @@ footer.control-footer {
    RESPONSIVE DESIGN (4K, DESKTOP, LAPTOP, TABLET, MOBILE)
    ========================================================================== */
 @media (max-width: 1200px) {
-  .digit-card { height: clamp(280px, 42vh, 440px); }
+  .digit-card { height: clamp(300px, 46vh, 480px); }
   .telemetry-bar { gap: 14px; font-size: 0.8rem; }
 }
 
 @media (max-width: 900px) {
   .telemetry-bar { display: none; }
-  .digit-card { height: clamp(220px, 35vh, 320px); }
-  .separator-container { gap: 14px; padding: 0 4px; }
-  .bat-beacon-led { width: 8px; height: 18px; }
-  .card-ribbon { padding: 4px; font-size: 0.6rem; }
-  .card-footer { padding: 10px 4px 4px; }
-  .char-name { font-size: 0.68rem; }
+  .digit-card { height: clamp(240px, 38vh, 360px); }
+  .separator-container { gap: 16px; padding: 0 6px; }
+  .bat-beacon-led { width: 10px; height: 22px; }
+  .card-ribbon { padding: 6px; font-size: 0.65rem; }
+  .card-footer { padding: 12px 6px 6px; }
+  .char-name { font-size: 0.75rem; }
 }
 
 @media (max-width: 650px) {
   .app-container { padding: 12px 6px; }
-  .lineup-frame { gap: 5px; padding: 14px 6px; border-radius: 10px; }
-  .digit-group { gap: 4px; }
-  .digit-card { height: clamp(160px, 28vh, 220px); min-width: 44px; border-radius: 6px; }
+  .lineup-frame { gap: 8px; padding: 16px 8px; border-radius: 10px; }
+  .digit-group { gap: 6px; }
+  .digit-card { height: clamp(180px, 30vh, 240px); min-width: 55px; border-radius: 6px; }
   .card-ribbon, .card-footer { display: none; }
-  .separator-container { gap: 8px; padding: 0 2px; }
-  .bat-beacon-led { width: 5px; height: 12px; }
+  .separator-container { gap: 10px; padding: 0 3px; }
+  .bat-beacon-led { width: 6px; height: 16px; }
   .control-buttons { flex-wrap: wrap; justify-content: center; }
   .date-display { font-size: 0.95rem; text-align: center; }
   .timezone-display { font-size: 0.7rem; text-align: center; }

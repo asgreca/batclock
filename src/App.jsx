@@ -11,7 +11,6 @@ import './App.css';
 export function App() {
   const [time, setTime] = useState(new Date());
   const [is24h, setIs24h] = useState(true);
-  const [showSeconds, setShowSeconds] = useState(true);
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [selectedDigit, setSelectedDigit] = useState(null);
 
@@ -20,7 +19,7 @@ export function App() {
   const themeLabels = ['WAYNE TECH', 'GCPD NOIR', 'ARKHAM TOXIC'];
   const [themeIndex, setThemeIndex] = useState(0);
 
-  // Clock 1-second interval
+  // Update clock every second (updates minutes on the exact turn)
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -28,12 +27,12 @@ export function App() {
     return () => clearInterval(timer);
   }, []);
 
-  // Audio click (if user turned on sound)
+  // Audio click when minute changes (if sound enabled)
   useEffect(() => {
     if (soundEnabled) {
       playTacticalClick(true);
     }
-  }, [time.getSeconds(), soundEnabled]);
+  }, [time.getMinutes(), soundEnabled]);
 
   // Keyboard Shortcuts (F = Fullscreen, M = Mute, T = Theme, Esc = Close modal)
   useEffect(() => {
@@ -63,14 +62,13 @@ export function App() {
     });
   };
 
-  // Compute Digits
+  // Compute Digits (Hours & Minutes only)
   let hours = time.getHours();
   if (!is24h) {
     hours = hours % 12 || 12;
   }
   const hStr = hours.toString().padStart(2, '0');
   const mStr = time.getMinutes().toString().padStart(2, '0');
-  const sStr = time.getSeconds().toString().padStart(2, '0');
 
   return (
     <>
@@ -84,7 +82,7 @@ export function App() {
       <div className="app-container">
         <Header />
 
-        {/* Center Clock Stage */}
+        {/* Center Clock Stage: Hours & Minutes (Peaceful, Steady, Hero-Sized) */}
         <main className="clock-stage">
           <div className="lineup-frame">
             {/* Hours */}
@@ -93,7 +91,7 @@ export function App() {
               <DigitCard slotKey="h2" digit={hStr[1]} onSelect={setSelectedDigit} />
             </div>
 
-            {/* Separator 1 */}
+            {/* Central Steady Separator */}
             <Separator />
 
             {/* Minutes */}
@@ -101,17 +99,6 @@ export function App() {
               <DigitCard slotKey="m1" digit={mStr[0]} onSelect={setSelectedDigit} />
               <DigitCard slotKey="m2" digit={mStr[1]} onSelect={setSelectedDigit} />
             </div>
-
-            {/* Separator 2 */}
-            {showSeconds && <Separator />}
-
-            {/* Seconds */}
-            {showSeconds && (
-              <div className="digit-group">
-                <DigitCard slotKey="s1" digit={sStr[0]} onSelect={setSelectedDigit} />
-                <DigitCard slotKey="s2" digit={sStr[1]} onSelect={setSelectedDigit} />
-              </div>
-            )}
           </div>
         </main>
 
@@ -121,8 +108,6 @@ export function App() {
           toggleSound={() => setSoundEnabled((prev) => !prev)}
           is24h={is24h}
           toggleFormat={() => setIs24h((prev) => !prev)}
-          showSeconds={showSeconds}
-          toggleSeconds={() => setShowSeconds((prev) => !prev)}
           themeLabel={themeLabels[themeIndex]}
           cycleTheme={cycleTheme}
           toggleFullscreen={toggleFullscreen}

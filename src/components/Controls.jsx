@@ -5,8 +5,6 @@ export function Controls({
   toggleSound,
   is24h,
   toggleFormat,
-  showSeconds,
-  toggleSeconds,
   themeLabel,
   cycleTheme,
   toggleFullscreen
@@ -39,10 +37,6 @@ export function Controls({
 
         <button className="btn-tactical" onClick={toggleFormat} title="Formato 12H ou 24H">
           <span>{is24h ? '24H' : '12H'}</span>
-        </button>
-
-        <button className="btn-tactical" onClick={toggleSeconds} title="Ocultar/Exibir Segundos">
-          <span>{showSeconds ? 'SEC ON' : 'SEC OFF'}</span>
         </button>
 
         <button className="btn-tactical" onClick={cycleTheme} title="Alternar estilo visual Gotham (Tecla T)">

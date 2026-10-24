@@ -8,39 +8,39 @@
   --bat-surface: #11131a;
 
   --primary: var(--bat-yellow);
-  --primary-glow: rgba(255, 229, 0, 0.65);
-  --primary-dim: rgba(255, 229, 0, 0.18);
+  --primary-glow: rgba(255, 229, 0, 0.55);
+  --primary-dim: rgba(255, 229, 0, 0.16);
   --accent: var(--bat-yellow-bright);
   --bg-dark: var(--bat-black);
   --bg-panel: rgba(10, 11, 15, 0.94);
   --bg-card: rgba(14, 16, 22, 0.98);
-  --border-panel: rgba(255, 229, 0, 0.48);
-  --border-card: rgba(255, 229, 0, 0.28);
+  --border-panel: rgba(255, 229, 0, 0.35);
+  --border-card: rgba(255, 229, 0, 0.22);
   --text-main: #FFFFFF;
   --text-muted: #a0a6b5;
-  --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 229, 0, 0.22);
+  --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(255, 229, 0, 0.15);
 }
 
 [data-theme="noir"] {
   /* GCPD Tactical Noir (Ice Blue) */
   --primary: #00d2ff;
-  --primary-glow: rgba(0, 210, 255, 0.55);
-  --primary-dim: rgba(0, 210, 255, 0.18);
+  --primary-glow: rgba(0, 210, 255, 0.5);
+  --primary-dim: rgba(0, 210, 255, 0.16);
   --accent: #80e5ff;
   --bg-panel: rgba(10, 18, 28, 0.94);
-  --border-panel: rgba(0, 210, 255, 0.45);
-  --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 210, 255, 0.22);
+  --border-panel: rgba(0, 210, 255, 0.35);
+  --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 210, 255, 0.15);
 }
 
 [data-theme="arkham"] {
   /* Arkham Toxic (Joker Acid Green) */
   --primary: #39ff14;
-  --primary-glow: rgba(57, 255, 20, 0.5);
-  --primary-dim: rgba(57, 255, 20, 0.18);
+  --primary-glow: rgba(57, 255, 20, 0.45);
+  --primary-dim: rgba(57, 255, 20, 0.16);
   --accent: #7aff60;
   --bg-panel: rgba(12, 22, 14, 0.94);
-  --border-panel: rgba(57, 255, 20, 0.45);
-  --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(57, 255, 20, 0.22);
+  --border-panel: rgba(57, 255, 20, 0.35);
+  --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(57, 255, 20, 0.15);
 }
 
 * {
@@ -87,13 +87,13 @@ html, body, #root {
   z-index: 2;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.18) 0px,
-    rgba(0, 0, 0, 0.18) 1px,
+    rgba(0, 0, 0, 0.16) 0px,
+    rgba(0, 0, 0, 0.16) 1px,
     transparent 1px,
     transparent 3px
   );
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
 #rain-canvas {
@@ -108,7 +108,7 @@ html, body, #root {
   position: fixed;
   inset: 0;
   z-index: 4;
-  background: rgba(255, 245, 180, 0.14);
+  background: rgba(255, 245, 180, 0.12);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.1s ease-out;
@@ -136,20 +136,9 @@ header.bat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid var(--border-panel);
+  border-bottom: 1.5px solid var(--border-panel);
   padding-bottom: clamp(10px, 1.4vh, 18px);
   position: relative;
-}
-
-header.bat-header::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 260px;
-  height: 3px;
-  background: var(--primary);
-  box-shadow: 0 0 16px var(--primary), 0 0 30px var(--primary);
 }
 
 .brand-section {
@@ -158,30 +147,33 @@ header.bat-header::after {
   gap: clamp(14px, 1.8vw, 24px);
 }
 
-/* OpenAI Generated Batman Emblem Container */
+/* Transparent Official Batman Bat Emblem */
 .bat-emblem-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(75px, 6.5vw, 115px);
-  aspect-ratio: 16 / 10;
-  overflow: visible;
-  filter: drop-shadow(0 0 18px var(--primary-glow));
+  width: clamp(70px, 6vw, 105px);
+  height: auto;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 0 14px var(--primary-glow));
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .brand-section:hover .bat-emblem-wrapper {
-  transform: scale(1.1) translateY(-2px);
-  filter: drop-shadow(0 0 26px var(--primary));
+  transform: scale(1.08) translateY(-2px);
+  filter: drop-shadow(0 0 22px var(--primary));
 }
 
 .bat-emblem-img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 55px;
   object-fit: contain;
-  mix-blend-mode: screen; /* Makes pure black 100% transparent, glowing yellow shines through */
-  border-radius: 4px;
+  background: transparent !important;
+  display: block;
 }
 
 .bat-insignia-vector {
@@ -205,7 +197,7 @@ header.bat-header::after {
   background: linear-gradient(180deg, #FFFFFF 10%, var(--primary) 70%, #d4a000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px var(--primary-glow));
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 18px var(--primary-glow));
   line-height: 1;
 }
 
@@ -238,7 +230,7 @@ header.bat-header::after {
   height: 9px;
   border-radius: 50%;
   background: var(--primary);
-  box-shadow: 0 0 12px var(--primary), 0 0 22px var(--primary);
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
   animation: pulse-dot 1.5s infinite ease-in-out;
 }
 
@@ -258,7 +250,7 @@ header.bat-header::after {
   padding: 10px 22px;
   border: 1px solid var(--border-panel);
   border-radius: 6px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 229, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 229, 0, 0.05);
 }
 
 .telemetry-item span {
@@ -268,7 +260,7 @@ header.bat-header::after {
 }
 
 /* ==========================================================================
-   CENTER CLOCK STAGE: HERO-SIZED IMPOSING CARDS
+   CENTER CLOCK STAGE: HERO-SIZED CLEAN FRAME
    ========================================================================== */
 .clock-stage {
   width: 100%;
@@ -281,6 +273,7 @@ header.bat-header::after {
   position: relative;
 }
 
+/* Clean, Balanced Lineup Frame (No detached outer brackets) */
 .lineup-frame {
   display: flex;
   align-items: center;
@@ -288,26 +281,13 @@ header.bat-header::after {
   gap: clamp(12px, 1.8vw, 32px);
   width: 100%;
   padding: clamp(24px, 3.8vh, 52px) clamp(20px, 2.5vw, 44px);
-  background: radial-gradient(ellipse at center, rgba(16, 18, 26, 0.88) 0%, rgba(6, 7, 10, 0.96) 80%);
-  border: 2px solid var(--border-panel);
-  border-radius: 16px;
+  background: radial-gradient(ellipse at center, rgba(14, 16, 24, 0.92) 0%, rgba(6, 7, 10, 0.98) 85%);
+  border: 1.5px solid var(--border-panel);
+  border-radius: 14px;
   backdrop-filter: blur(16px);
-  box-shadow: var(--card-shadow), inset 0 0 80px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--card-shadow), inset 0 0 60px rgba(0, 0, 0, 0.85);
   position: relative;
 }
-
-/* Corner Reticles */
-.lineup-frame::before, .lineup-frame::after {
-  content: '';
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border: 3px solid var(--primary);
-  pointer-events: none;
-  filter: drop-shadow(0 0 8px var(--primary));
-}
-.lineup-frame::before { top: -3px; left: -3px; border-right: none; border-bottom: none; }
-.lineup-frame::after { bottom: -3px; right: -3px; border-left: none; border-top: none; }
 
 /* DIGIT GROUPS */
 .digit-group {
@@ -318,24 +298,23 @@ header.bat-header::after {
 /* HERO-SIZED DIGIT CARD */
 .digit-card {
   position: relative;
-  /* Sized by screen height so it commands the display */
   height: clamp(340px, 48vh, 560px);
   aspect-ratio: 1024 / 1395;
   width: auto;
   min-width: 135px;
   background: var(--bg-card);
-  border-radius: 10px;
-  border: 2px solid var(--border-card);
+  border-radius: 8px;
+  border: 1.5px solid var(--border-card);
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.8);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.92);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .digit-card:hover {
-  transform: translateY(-12px) scale(1.035);
+  transform: translateY(-10px) scale(1.025);
   border-color: var(--primary);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98), 0 0 40px var(--primary);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98), 0 0 30px var(--primary-glow);
 }
 
 /* Card Ribbon (Top Badge) */
@@ -345,7 +324,7 @@ header.bat-header::after {
   left: 0;
   right: 0;
   z-index: 5;
-  background: linear-gradient(180deg, rgba(4, 5, 8, 0.96) 0%, rgba(4, 5, 8, 0.5) 100%);
+  background: linear-gradient(180deg, rgba(4, 5, 8, 0.95) 0%, rgba(4, 5, 8, 0.45) 100%);
   padding: clamp(8px, 1.2vh, 12px) clamp(10px, 1vw, 16px);
   display: flex;
   justify-content: space-between;
@@ -353,7 +332,7 @@ header.bat-header::after {
   font-family: 'Share Tech Mono', monospace;
   font-size: clamp(0.7rem, 0.85vw, 0.95rem);
   color: var(--text-muted);
-  border-bottom: 1px solid rgba(255, 229, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 229, 0, 0.12);
   pointer-events: none;
 }
 
@@ -384,7 +363,7 @@ header.bat-header::after {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  transition: opacity 0.38s ease-in-out, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.35s ease-in-out, transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
   filter: contrast(1.1) brightness(0.98);
 }
 
@@ -396,7 +375,7 @@ header.bat-header::after {
 
 .digit-img.prev {
   opacity: 0;
-  transform: scale(0.96);
+  transform: scale(0.97);
   z-index: 1;
 }
 
@@ -405,8 +384,8 @@ header.bat-header::after {
   position: absolute;
   inset: 0;
   z-index: 4;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, transparent 45%, rgba(0, 0, 0, 0.4) 100%),
-              radial-gradient(circle at center, transparent 35%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 45%, rgba(0, 0, 0, 0.4) 100%),
+              radial-gradient(circle at center, transparent 35%, rgba(0, 0, 0, 0.45) 100%);
   pointer-events: none;
 }
 
@@ -423,7 +402,7 @@ header.bat-header::after {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border-top: 1px solid rgba(255, 229, 0, 0.12);
+  border-top: 1px solid rgba(255, 229, 0, 0.1);
   pointer-events: none;
 }
 
@@ -450,13 +429,14 @@ header.bat-header::after {
   text-shadow: 0 0 8px var(--primary-glow);
 }
 
+/* Subtle clean card update flash without border snapping */
 .digit-card.digit-updated {
-  animation: card-flash 0.5s ease-out;
+  animation: card-pulse 0.45s ease-out;
 }
 
-@keyframes card-flash {
-  0% { border-color: #ffffff; box-shadow: 0 0 45px #ffffff, 0 0 60px var(--primary); }
-  100% { border-color: var(--border-card); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9); }
+@keyframes card-pulse {
+  0% { box-shadow: 0 0 25px var(--primary-glow); }
+  100% { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.92); }
 }
 
 /* ==========================================================================
@@ -476,7 +456,7 @@ header.bat-header::after {
   height: clamp(24px, 3vh, 42px);
   background: var(--primary);
   border-radius: 4px;
-  box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary-glow);
+  box-shadow: 0 0 16px var(--primary), 0 0 32px var(--primary-glow);
   transition: all 0.25s ease;
 }
 
@@ -495,7 +475,7 @@ footer.control-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 2px solid var(--border-panel);
+  border-top: 1.5px solid var(--border-panel);
   padding-top: clamp(12px, 1.6vh, 22px);
   position: relative;
 }
@@ -552,7 +532,7 @@ footer.control-footer {
   background: var(--primary-dim);
   border-color: var(--primary);
   color: var(--primary);
-  box-shadow: 0 0 22px var(--primary-glow);
+  box-shadow: 0 0 20px var(--primary-glow);
   transform: translateY(-2px);
 }
 
@@ -560,7 +540,7 @@ footer.control-footer {
   background: var(--primary);
   color: #000000;
   border-color: var(--primary);
-  box-shadow: 0 0 25px var(--primary);
+  box-shadow: 0 0 22px var(--primary);
   font-weight: 800;
 }
 
@@ -598,7 +578,7 @@ footer.control-footer {
   border: 2px solid var(--primary);
   border-radius: 10px;
   padding: clamp(24px, 3.5vh, 38px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.98), 0 0 50px var(--primary-glow);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.98), 0 0 45px var(--primary-glow);
   display: flex;
   flex-direction: column;
   gap: 24px;

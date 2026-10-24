@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=d81ec36c-1c02-4f68-961d-7dc730c22d03
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <title>BatClock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .titulo {
+      font-family: 'Bangers', cursive;
+      color: #fff;
+      font-size: 8vw;
+      text-align: center;
+      margin-bottom: 2vh;
+    }
+
+    .relogio {
+      display: flex;
+      gap: 1vw;
+      max-width: 100vw;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      overflow-x: auto;
+    }
+
+    .digito {
+      height: 30vh;
+      max-height: 100%;
+      width: auto;
+    }
+
+    .separador {
+      font-size: 8vw;
+      color: white;
+      padding: 0 1vw;
+      line-height: 1;
+    }
+
+    .gmt-info {
+      color: #aaa;
+      font-size: 2vw;
+      margin-top: 2vh;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="titulo">BatClock</h1>
+  <div class="relogio">
+    <img class="digito" id="h1" src="" alt="h1">
+    <img class="digito" id="h2" src="" alt="h2">
+    <div class="separador">:</div>
+    <img class="digito" id="m1" src="" alt="m1">
+    <img class="digito" id="m2" src="" alt="m2">
+    <div class="separador">:</div>
+    <img class="digito" id="s1" src="" alt="s1">
+    <img class="digito" id="s2" src="" alt="s2">
+  </div>
+  <div class="gmt-info" id="gmt-info"></div>
+
+  <script>
+    const imagens = {
+      '0': 'https://i.imgur.com/2Zjv4uD.png',
+      '1': 'https://i.imgur.com/4bLW7b8.png',
+      '2': 'https://i.imgur.com/FTLtg2d.png',
+      '3': 'https://i.imgur.com/PRspwXq.png',
+      '4': 'https://i.imgur.com/VClixoJ.png',
+      '5': 'https://i.imgur.com/paGTxrU.png',
+      '6': 'https://i.imgur.com/uw2z4OY.png',
+      '7': 'https://i.imgur.com/ku4POH2.png',
+      '8': 'https://i.imgur.com/b9W7Qqa.png',
+      '9': 'https://i.imgur.com/jnsxfpS.png'
+    };
+
+    function atualizarRelogio() {
+      const agora = new Date();
+      const hora = agora.getHours().toString().padStart(2, '0');
+      const minuto = agora.getMinutes().toString().padStart(2, '0');
+      const segundo = agora.getSeconds().toString().padStart(2, '0');
+
+      document.getElementById("h1").src = imagens[hora[0]];
+      document.getElementById("h2").src = imagens[hora[1]];
+      document.getElementById("m1").src = imagens[minuto[0]];
+      document.getElementById("m2").src = imagens[minuto[1]];
+      document.getElementById("s1").src = imagens[segundo[0]];
+      document.getElementById("s2").src = imagens[segundo[1]];
+
+      const gmtOffset = -agora.getTimezoneOffset() / 60;
+      const sinal = gmtOffset >= 0 ? '+' : '-';
+      const gmtString = `Horário atual (GMT${sinal}${Math.abs(gmtOffset)})`;
+      document.getElementById("gmt-info").textContent = gmtString;
+    }
+
+    atualizarRelogio();
+    setInterval(atualizarRelogio, 1000);
+  </script>
+</body>
+</html>

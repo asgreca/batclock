@@ -9,15 +9,20 @@ export function DigitCard({ slotKey, digit, onSelect }) {
       className="digit-card"
       data-slot={slotKey}
       onClick={() => onSelect(digit)}
-      title={`Ver ficha criminal de ${charData.name} (#${digit})`}
+      title={`Abrir análise detalhada do Batcomputador: ${charData.name} (#${digit})`}
     >
-      {/* Tactical Top Ribbon */}
+      {/* Batcomputer Target HUD Ribbon */}
       <div className="card-ribbon">
-        <span className="badge-gcpd">GCPD</span>
-        <span className="badge-slot">{slotKey.toUpperCase()}</span>
+        <div className="ribbon-left">
+          <span className="badge-gcpd">BATSCAN</span>
+          <span className="badge-slot">#{digit}</span>
+        </div>
+        <div className="ribbon-right">
+          <span className="hud-match">RECOG {charData.matchScore}</span>
+        </div>
       </div>
 
-      {/* Single Solid Opaque Image (Zero Ghosting, Zero Flicker) */}
+      {/* Solid Character Mugshot */}
       <div className="card-images-wrapper">
         <img
           className="digit-img"
@@ -27,13 +32,22 @@ export function DigitCard({ slotKey, digit, onSelect }) {
         />
       </div>
 
-      {/* Clean Glass Overlay */}
+      {/* Target Reticle Accents */}
+      <div className="card-reticles">
+        <span className="reticle-tl"></span>
+        <span className="reticle-tr"></span>
+        <span className="reticle-bl"></span>
+        <span className="reticle-br"></span>
+      </div>
+
+      {/* Glass Sheen */}
       <div className="card-glass"></div>
 
-      {/* Tactical Bottom Footer */}
+      {/* Batcomputer Analysis Footer */}
       <div className="card-footer">
-        <span className="char-name">{charData.name}</span>
-        <span className="char-code">DOSSIER #{digit}</span>
+        <span className="char-name">{charData.comicTitle}</span>
+        <div className="char-threat-tag">{charData.threatBadge}</div>
+        <span className="char-biometric">{charData.biometric}</span>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 :root {
-  /* ICONIC BATMAN YELLOW & BLACK THEME */
+  /* ICONIC DC COMICS BATMAN YELLOW & BLACK PALETTE */
   --bat-yellow: #FFE500;
   --bat-yellow-bright: #FFF033;
   --bat-gold: #FFCC00;
@@ -55,7 +55,7 @@ html, body, #root {
   height: 100%;
   overflow: hidden;
   background-color: var(--bg-dark);
-  font-family: 'Rajdhani', -apple-system, sans-serif;
+  font-family: 'Chakra Petch', -apple-system, sans-serif;
   color: var(--text-main);
 }
 
@@ -117,7 +117,7 @@ html, body, #root {
 }
 
 /* ==========================================================================
-   HEADER SECTION: BATMAN EMBLEM & TACTICAL HUD
+   HEADER SECTION: BATCOMPUTER MAINFRAME HUD & DC COMIC TYPOGRAPHY
    ========================================================================== */
 header.bat-header {
   width: 100%;
@@ -165,44 +165,43 @@ header.bat-header {
   display: block;
 }
 
-.bat-insignia-vector {
-  width: 100%;
-  height: auto;
-  fill: var(--primary);
-  filter: drop-shadow(0 0 12px var(--primary-glow));
-}
-
 .title-group {
   display: flex;
   flex-direction: column;
 }
 
+/* DC Comics Style Title */
 .main-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.8rem, 3.2vw, 3.4rem);
-  font-weight: 900;
-  letter-spacing: 0.16em;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 4.4vw, 4.6rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 0.88;
   text-transform: uppercase;
-  background: linear-gradient(180deg, #FFFFFF 10%, var(--primary) 70%, #d4a000 100%);
+  background: linear-gradient(180deg, #FFFFFF 15%, var(--primary) 65%, #d4a000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 18px var(--primary-glow));
-  line-height: 1;
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px var(--primary-glow));
 }
 
 .sub-title {
   font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(0.7rem, 0.95vw, 1rem);
+  font-size: clamp(0.7rem, 0.88vw, 0.95rem);
   color: var(--text-muted);
-  letter-spacing: 0.22em;
-  margin-top: 6px;
+  letter-spacing: 0.18em;
+  margin-top: 4px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+.brand-terminal {
+  color: var(--primary);
+  font-weight: bold;
 }
 
 .divider-slash {
-  color: var(--primary);
+  color: rgba(255, 229, 0, 0.5);
   font-weight: bold;
 }
 
@@ -215,8 +214,8 @@ header.bat-header {
 }
 
 .live-dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--primary);
   box-shadow: 0 0 10px var(--primary);
@@ -224,11 +223,11 @@ header.bat-header {
 
 .telemetry-bar {
   font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(0.75rem, 0.95vw, 1rem);
+  font-size: clamp(0.72rem, 0.9vw, 0.92rem);
   color: var(--text-muted);
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
   background: var(--bg-panel);
   padding: 10px 22px;
   border: 1px solid var(--border-panel);
@@ -243,7 +242,7 @@ header.bat-header {
 }
 
 /* ==========================================================================
-   CENTER CLOCK STAGE: 4 LARGE HERO-SIZED CARDS (HOURS & MINUTES)
+   CENTER CLOCK STAGE: BATCOMPUTER THREAT MATRIX (4 HERO CARDS)
    ========================================================================== */
 .clock-stage {
   width: 100%;
@@ -299,39 +298,52 @@ header.bat-header {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98), 0 0 30px var(--primary-glow);
 }
 
-/* Card Ribbon (Top Badge) */
+/* Card Top Ribbon (Batcomputer Scan Header) */
 .card-ribbon {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 5;
-  background: linear-gradient(180deg, rgba(4, 5, 8, 0.95) 0%, rgba(4, 5, 8, 0.45) 100%);
+  background: linear-gradient(180deg, rgba(4, 5, 8, 0.96) 0%, rgba(4, 5, 8, 0.45) 100%);
   padding: clamp(8px, 1.2vh, 14px) clamp(10px, 1vw, 18px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(0.75rem, 0.9vw, 1rem);
+  font-size: clamp(0.72rem, 0.88vw, 0.95rem);
   color: var(--text-muted);
   border-bottom: 1px solid rgba(255, 229, 0, 0.12);
   pointer-events: none;
 }
 
-.card-ribbon .badge-gcpd {
+.ribbon-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-gcpd {
   color: var(--primary);
   font-weight: 800;
   letter-spacing: 0.14em;
   text-shadow: 0 0 8px var(--primary-glow);
 }
 
-.card-ribbon .badge-slot {
+.badge-slot {
   color: #ffffff;
   font-weight: 700;
   opacity: 0.85;
 }
 
-/* Image Container (100% Solid, Instant Updates, Zero Ghosting) */
+.hud-match {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 0.85em;
+}
+
+/* Image Container */
 .card-images-wrapper {
   position: relative;
   width: 100%;
@@ -351,54 +363,90 @@ header.bat-header {
   transition: none;
 }
 
+/* Batcomputer Targeting Reticles */
+.card-reticles {
+  position: absolute;
+  inset: 10px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.reticle-tl, .reticle-tr, .reticle-bl, .reticle-br {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(255, 229, 0, 0.35);
+  border-style: solid;
+}
+.reticle-tl { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; }
+.reticle-tr { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
+.reticle-bl { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; }
+.reticle-br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+
 /* Clean Glass Overlay */
 .card-glass {
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 3;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 45%, rgba(0, 0, 0, 0.4) 100%),
               radial-gradient(circle at center, transparent 35%, rgba(0, 0, 0, 0.45) 100%);
   pointer-events: none;
 }
 
-/* Card Nameplate (Bottom) */
+/* Card Nameplate (Bottom): DC Comics Style Character Names */
 .card-footer {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 5;
-  background: linear-gradient(0deg, rgba(3, 4, 6, 0.98) 0%, rgba(5, 6, 9, 0.88) 65%, transparent 100%);
-  padding: clamp(22px, 3vh, 36px) clamp(8px, 0.8vw, 16px) clamp(10px, 1.4vh, 16px);
+  background: linear-gradient(0deg, rgba(3, 4, 6, 0.98) 0%, rgba(5, 6, 9, 0.9) 65%, transparent 100%);
+  padding: clamp(20px, 2.8vh, 32px) clamp(8px, 0.8vw, 16px) clamp(10px, 1.4vh, 16px);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border-top: 1px solid rgba(255, 229, 0, 0.1);
+  border-top: 1px solid rgba(255, 229, 0, 0.12);
   pointer-events: none;
 }
 
 .char-name {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(0.85rem, 1.1vw, 1.25rem);
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 2vw, 2.3rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 0.95;
   color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 12px rgba(255, 229, 0, 0.35);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 95%;
 }
 
-.char-code {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(0.7rem, 0.85vw, 0.9rem);
+.char-threat-tag {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: clamp(0.6rem, 0.72vw, 0.8rem);
+  font-weight: 700;
   color: var(--primary);
-  font-weight: bold;
+  background: rgba(255, 229, 0, 0.12);
+  border: 1px solid rgba(255, 229, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 3px;
   letter-spacing: 0.12em;
-  margin-top: 3px;
-  text-shadow: 0 0 8px var(--primary-glow);
+  margin-top: 4px;
+}
+
+.char-biometric {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(0.55rem, 0.65vw, 0.72rem);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ==========================================================================
@@ -442,10 +490,10 @@ footer.control-footer {
 }
 
 .date-display {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.1rem, 1.5vw, 1.7rem);
-  letter-spacing: 0.16em;
-  font-weight: 800;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  letter-spacing: 0.1em;
+  line-height: 1;
   color: #ffffff;
   text-transform: uppercase;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
@@ -453,7 +501,7 @@ footer.control-footer {
 
 .timezone-display {
   font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(0.75rem, 0.9vw, 1rem);
+  font-size: clamp(0.72rem, 0.88vw, 0.95rem);
   color: var(--primary);
   letter-spacing: 0.16em;
   margin-top: 4px;
@@ -529,7 +577,7 @@ footer.control-footer {
 }
 
 .dossier-card {
-  width: min(720px, 94vw);
+  width: min(740px, 94vw);
   background: #090b10;
   border: 2px solid var(--primary);
   border-radius: 10px;
@@ -537,7 +585,7 @@ footer.control-footer {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.98), 0 0 45px var(--primary-glow);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
   position: relative;
   transform: scale(0.92);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -555,28 +603,36 @@ footer.control-footer {
   padding-bottom: 16px;
 }
 
+.dossier-eyebrow {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--primary);
+  letter-spacing: 0.18em;
+}
+
 .dossier-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-  font-weight: 900;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 3.2vw, 3.2rem);
+  font-weight: 400;
+  line-height: 0.95;
   color: #ffffff;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
 }
 
 .dossier-subtitle {
   font-family: 'Share Tech Mono', monospace;
-  color: var(--primary);
+  color: var(--text-muted);
   font-size: 0.95rem;
   letter-spacing: 0.12em;
-  margin-top: 5px;
-  font-weight: bold;
+  margin-top: 4px;
 }
 
 .dossier-close {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  font-size: 1.8rem;
+  font-size: 2rem;
   cursor: pointer;
   line-height: 1;
   transition: color 0.2s;
@@ -588,13 +644,20 @@ footer.control-footer {
 
 .dossier-body {
   display: grid;
-  grid-template-columns: 160px 1fr;
+  grid-template-columns: 170px 1fr;
   gap: 24px;
   align-items: center;
 }
 
+.dossier-mugshot-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
 .dossier-mugshot {
-  width: 160px;
+  width: 170px;
   aspect-ratio: 1024 / 1395;
   border-radius: 8px;
   border: 2px solid var(--primary);
@@ -602,12 +665,23 @@ footer.control-footer {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
 }
 
+.mugshot-scan-badge {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #000;
+  background: var(--primary);
+  padding: 2px 10px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+}
+
 .dossier-details {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .dossier-row {
@@ -617,7 +691,7 @@ footer.control-footer {
 
 .dossier-label {
   color: var(--text-muted);
-  width: 120px;
+  width: 130px;
   flex-shrink: 0;
   font-weight: bold;
 }
@@ -625,6 +699,11 @@ footer.control-footer {
 .dossier-value {
   color: #ffffff;
   font-weight: 600;
+}
+
+.dossier-bio {
+  line-height: 1.4;
+  color: #d8dde8;
 }
 
 .threat-extreme { color: #ff334b !important; font-weight: bold; text-shadow: 0 0 10px rgba(255, 51, 75, 0.6); }
@@ -646,7 +725,7 @@ footer.control-footer {
   .bat-beacon-led { width: 10px; height: 22px; }
   .card-ribbon { padding: 6px; font-size: 0.65rem; }
   .card-footer { padding: 12px 6px 6px; }
-  .char-name { font-size: 0.75rem; }
+  .char-name { font-size: 1.2rem; }
 }
 
 @media (max-width: 650px) {
@@ -658,7 +737,7 @@ footer.control-footer {
   .separator-container { gap: 10px; padding: 0 3px; }
   .bat-beacon-led { width: 6px; height: 16px; }
   .control-buttons { flex-wrap: wrap; justify-content: center; }
-  .date-display { font-size: 0.95rem; text-align: center; }
+  .date-display { font-size: 1.2rem; text-align: center; }
   .timezone-display { font-size: 0.7rem; text-align: center; }
   footer.control-footer { flex-direction: column; gap: 12px; }
   .dossier-body { grid-template-columns: 1fr; justify-items: center; text-align: center; }
